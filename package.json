@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "yarn eslint --max-warnings=0",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "yarn test --watch"
   },
   "devDependencies": {
     "@types/jest": "^26.0.15",
