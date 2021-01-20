@@ -1,4 +1,4 @@
-import { User } from './user'
+import { User } from '../../src/entities/user'
 
 describe('User domain class', () => {
   it('Should not create user with invalid e-mail address', () => {
@@ -19,12 +19,14 @@ describe('User domain class', () => {
     expect(error.message).toEqual(`Invalid name: ${invalidName}.`)
   })
 
-  // it('Should not create user with invalid name (too many characters)', () => {
-  //   const invalidName = 'O'.repeat(257)
-  //   const error = User.create({ name: invalidName, email: 'any@gmail.com' })
+  it('Should not create user with invalid name (too many characters)', () => {
+    const invalidName = 'O'.repeat(257)
+    const error = User.create({ name: invalidName, email: 'any@gmail.com' })
+      .value as Error
 
-  //   expect(error).toEqual(left(new InvalidNameError()))
-  // })
+    expect(error.name).toEqual('InvalidNameError')
+    expect(error.message).toEqual(`Invalid name: ${invalidName}.`)
+  })
 
   it('should create user with valid data', () => {
     const validName = 'any_name'
