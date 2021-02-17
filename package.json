@@ -5,6 +5,7 @@
   "author": "Carlos Berti <carlosberti182@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "node dist/main/server.js",
     "build": "rimraf dist && tsc -p tsconfig-build.json",
     "lint": "yarn eslint --max-warnings=0",
     "test": "jest",
